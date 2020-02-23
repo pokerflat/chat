@@ -33,7 +33,7 @@ body {
 	line-height: 19px;
 	padding: 8px;
 }
-.main_field {
+#main_field {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
@@ -50,6 +50,7 @@ body {
 .user_name_message {
 	display: flex;
 	align-self: flex-end;
+	margin-bottom: 16px;
 }
 .send_message {
 	display: flex;
