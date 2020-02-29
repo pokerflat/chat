@@ -22,13 +22,13 @@ function welcomeText(socket) {
 }
 
 io.on('connection', function (socket) {
-  setInterval(welcomeText, 15000, socket);
-  console.log('Подключено!')   // Добавил для понимания, что подключились
+  setInterval(welcomeText, 150, socket);
+  console.log('Подключено!');   // Добавил для понимания, что подключились
 
   socket.on('message', function (data) {
     console.log(data);    // Добавил для понимания, что вывводится в консоль сервера
     socket.emit('message', { message: data.message, user: data.user });
   });
+});
 
-  });
 
