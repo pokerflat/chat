@@ -12,3 +12,14 @@ function div_create(div_msg) {
 }
 div_create('Это второе сообщение');
 
+var socket=io.connect();
+
+socket.on('connect', function() {
+    console.log('Подключились к серверу');
+    socket.emit('message', {message: message, user: name});
+    console.log('Данные ушли на сервер');
+});
+
+
+
+
