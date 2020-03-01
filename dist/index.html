@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
-   <link rel="stylesheet" href="/style.css">
 <link href="main.css" rel="stylesheet"></head>
 <body>
     <div class="wrapper"> 
-        <input type="text" class="chatname" placeholder="Your chat name">
+        <input type="text" id="chatname" placeholder="Your chat name">
         <div id="main_field">
             <div class="bot_name">Bot:</div>
             <div id="bot_message"></div>
@@ -16,46 +15,10 @@
         </div>
         <div class="send_message">
             <input type="text" id="message" placeholder="message..">
-           <!-- <button>send</button>  -->
             <input id="send_button" type="button" value="send">
         </div>
     </div>
-<!--<script src="js/main.js"></script> --> 
-<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script type="text/javascript" src="bundle.js"></script> 
-<script>
-   let socket = io('http://localhost:8080');
-
-    socket.on('connect', function() {
-        console.log('Подключились к серверу');
-    });
-  
-    socket.on('message_to_client', function (data) {
-        console.log(data);
-        function createBotMsg() {
-            let newDivBot=document.createElement('div');
-            newDivBot.innerHTML=(data.user+': '+data.message);
-            document.getElementById('main_field').appendChild(newDivBot);
-        }
-        createBotMsg()
-    });
-
-    send_button.onclick = function() { 
-        let message= {
-             message: ''
-         };
-
-        message.message=document.getElementById('message').value;   
-        socket.emit('message_to_server', {message: message, user: name});
-    
-        function createUserMsg() {
-            let newDiv=document.createElement('div');
-            newDiv.innerHTML=('User: '+message.message);
-            document.getElementById('main_field').appendChild(newDiv);
-        }
-
-        createUserMsg();    
-    };
-</script> 
-</body>
+<script type="text/javascript" src="bundle.js"></script></body>
 </html>

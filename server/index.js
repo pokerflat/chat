@@ -30,5 +30,3 @@ io.on('connection', function (socket) {
     socket.emit('message_to_client', { message: data.message, user: data.user });
   });
 });
-
-

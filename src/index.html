@@ -4,23 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
-   <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
     <div class="wrapper"> 
-        <input type="text" class="chatname" placeholder="Your chat name">
+        <input type="text" id="chatname" placeholder="Your chat name">
         <div id="main_field">
             <div class="bot_name">Bot:</div>
             <div id="bot_message"></div>
             <div class="user_name_message">Имя: Добрый день!</div>
         </div>
         <div class="send_message">
-            <input type="text" class="message" placeholder="message..">
-            <button>send</button>
+            <input type="text" id="message" placeholder="message..">
+            <input id="send_button" type="button" value="send">
         </div>
     </div>
-<script src="index.js"></script> 
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-
+<script type="text/javascript" src="bundle.js"></script> 
 </body>
 </html>
