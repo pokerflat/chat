@@ -22,7 +22,7 @@ function welcomeText(socket) {
 }
 
 io.on('connection', function (socket) {
-  setInterval(welcomeText, 150, socket);
+  setInterval(welcomeText, 15000, socket);
   console.log('Подключено!');   // Добавил для понимания, что подключились
 
   socket.on('message_to_server', function (data) {

@@ -24,32 +24,37 @@
 <script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="bundle.js"></script> 
 <script>
-    var socket=io.connect();
+   let socket = io('http://localhost:8080');
 
     socket.on('connect', function() {
         console.log('Подключились к серверу');
     });
-
+  
     socket.on('message_to_client', function (data) {
-      console.log(data);
+        console.log(data);
+        function createBotMsg() {
+            let newDivBot=document.createElement('div');
+            newDivBot.innerHTML=(data.user+': '+data.message);
+            document.getElementById('main_field').appendChild(newDivBot);
+        }
+        createBotMsg()
     });
 
     send_button.onclick = function() { 
-    let message= {
-        message: '',
-        user: 'test'
-    };
+        let message= {
+             message: ''
+         };
 
-    message.message=document.getElementById('message').value;   
-    socket.emit('message_to_server', {message: message, user: name});
+        message.message=document.getElementById('message').value;   
+        socket.emit('message_to_server', {message: message, user: name});
     
-    function createUserMsg() {
-    let newDiv=document.createElement('div');
-    newDiv.innerHTML=('User: '+message.message);
-    document.getElementById('main_field').appendChild(newDiv);
-    }
-    
-    createUserMsg();    
+        function createUserMsg() {
+            let newDiv=document.createElement('div');
+            newDiv.innerHTML=('User: '+message.message);
+            document.getElementById('main_field').appendChild(newDiv);
+        }
+
+        createUserMsg();    
     };
 </script> 
 </body>
